@@ -1,0 +1,20 @@
+services:
+  django:
+    build:
+      context: ./containers
+      dockerfile: DockerFile
+
+    container_name: django
+
+    ports:
+      - "8000:8000"
+
+    tty: true
+
+    volumes:
+      - ${SRC_PATH}:/root/workspace
+    env_file:
+      - .env
+    environment:
+      - DEBUG=true
+      - ALLOWED_HOSTS=*
